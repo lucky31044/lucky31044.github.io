@@ -1,241 +1,1013 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Abhinav Jain</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav Jain | AI Lead & Innovator</title>
+    <meta name="description" content="Portfolio of Abhinav Jain, AI Lead at Cloudwerx, GDG Cloud Lead, and Hackathon Champion.">
 
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: '#00f3ff',
+                        purple: '#bc13fe',
+                        dark: '#050505',
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                        glassBorder: 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Rajdhani', sans-serif;
+        }
 
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+        }
 
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+        /* 3D Canvas fixed behind content */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0; /* Fade in on load */
+            transition: opacity 1.5s ease;
+        }
 
-  
-	<title>CV - Boxed</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8">
-	
-	
-	<!-- Font -->
-	
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
-	
-	<!-- Stylesheets -->
-	
-	<link href="common-css/bootstrap.css" rel="stylesheet">
-	
-	<link href="common-css/ionicons.css" rel="stylesheet">
-	
-	<link href="common-css/fluidbox.min.css" rel="stylesheet">
-	
-	<link href="01-cv-portfolio/css/styles.css" rel="stylesheet">
-	
-	<link href="01-cv-portfolio/css/responsive.css" rel="stylesheet">
-	
+        /* Glassmorphism Utilities */
+        .glass-card {
+            background: rgba(10, 10, 15, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 243, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Neon Text Glow */
+        .text-glow {
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+        }
+        .text-glow-purple {
+            text-shadow: 0 0 10px rgba(188, 19, 254, 0.5), 0 0 20px rgba(188, 19, 254, 0.3);
+        }
+
+        /* Loading Screen */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .loader-bar {
+            width: 200px;
+            height: 2px;
+            background: #333;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .loader-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: #00f3ff;
+            width: 0%;
+            transition: width 0.2s;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00f3ff;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #00f3ff;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+    </style>
 </head>
-<body>
-	
-	<header>
-	
-		<div class="container">
-			<div class="heading-wrapper">
-				<div class="row">
-					<div class="col-sm-6 col-md-6 col-lg-4">
-						<div class="info">
-							<i class="icon ion-ios-location-outline"></i>
-							<div class="right-area">
-								<h5>173 Ashwini Market</h5>
-								<h5>Udaipur,RJ 313001</h5>
-							</div><!-- right-area -->
-						</div><!-- info -->
-					</div><!-- col-sm-4 -->
-					
-					<div class="col-sm-6 col-md-6 col-lg-4">
-						<div class="info">
-							<i class="icon ion-ios-telephone-outline"></i>
-							<div class="right-area">
-								<h5>+91 7014326179</h5>
-								
-							</div><!-- right-area -->
-						</div><!-- info -->
-					</div><!-- col-sm-4 -->
-					
-					<div class="col-sm-6 col-md-6 col-lg-4">
-						<div class="info">
-							<i class="icon ion-ios-chatboxes-outline"></i>
-							<div class="right-area">
-								<h5>jain.abhinav14.com</h5>
-								
-							</div><!-- right-area -->
-						</div><!-- info -->
-					</div><!-- col-sm-4 -->
-				</div><!-- row -->
-			</div><!-- heading-wrapper -->
-			
-			<!--<a class="downlad-btn" href="https://drive.google.com/uc?export=download&id=1128SeQlvvE34xO0IN8q2XcdUMfEiV4oF">Download CV</a>-->
-		</div><!-- container -->
-	</header>
-	
-	<section class="intro-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-1 col-lg-2"></div>
-				<div class="col-md-10 col-lg-8">
-					<div class="intro">
-						<div class="profile-img"><img src="https://res.cloudinary.com/frazor/image/upload/v1662734752/RAM_0633_hspmrr.jpg" alt=""></div>
-						<h2><b>Abhinav Jain</b></h2>
-						<h4 class="font-yellow">Entrepreneur and Tech Enthusiast</h4>
-						<ul class="information margin-tb-30">
-							<li><b>BORN : </b>November 14, 1998</li>
-							<li><b>EMAIL : </b>jain.abhinav14.com</li>
-							<li><b>Key Interest : </b>Integration, Artificial Intelligence, Deep Tech</li>
-						</ul>
-						<ul class="social-icons">
-							<li><a href="https://www.linkedin.com/in/abhinav-jain-8b4bab62/"><i class="ion-social-linkedin"></i></a></li>
-							<li><a href="https://github.com/lucky31044"><i class="ion-social-github"></i></a></li>
-							<li><a href="https://www.facebook.com/profile.php?id=100012413913786"><i class="ion-social-facebook"></i></a></li>
-							
-						</ul>
-					</div><!-- intro -->
-				</div><!-- col-sm-8 -->
-			</div><!-- row -->
-		</div><!-- container -->
-	</section><!-- intro-section -->
-	 <!--==========================
-      Services Section
-    ============================-->
-	<!--
-    <section id="services" class="section-bg">
-	    
-      <div class="container">
+<body class="antialiased selection:bg-neon selection:text-black">
 
-        <center>
-          <h3><b><i>Projects</b></i></h3><br><br><Br>
-          <p></p></center>
-        
-
-        <div class="row">
-
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon" style="background: #fceef3;"><i class="ion-ios-analytics-outline" style="color: #ff689b;"></i></div>
-              <h4 class="title"><a href="">Smart Class</a></h4>
-              <p class="description">A smart class system for Assignments ,Group Chats , Instant Notices and File uploading created for Android</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon" style="background: #fff0da;"><i class="ion-ios-bookmarks-outline" style="color: #e98e06;"></i></div>
-              <h4 class="title"><a href="">Face Recognition using One Shot Learning</a></h4>
-              <p class="description">Improved Facial Recognition System using siamese network</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon" style="background: #e6fdfc;"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
-              <h4 class="title"><a href="">Automatic Excel Data Entry </a></h4>
-              <p class="description">A Tkinter Python application for Automatic data entry</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon" style="background: #eafde7;"><i class="ion-ios-speedometer-outline" style="color:#41cf2e;"></i></div>
-              <h4 class="title"><a href="">Loan Classification Model</a></h4>
-              <p class="description">Loan classification using Python and Flask </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon" style="background: #e1eeff;"><i class="ion-ios-world-outline" style="color: #2282ff;"></i></div>
-              <h4 class="title"><a href="">Touch free Gallery</a></h4>
-              <p class="description">Change photos of gallery using proximity sensor</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon" style="background: #ecebff;"><i class="ion-ios-clock-outline" style="color: #8660fe;"></i></div>
-              <h4 class="title"><a href="">Personal Portfolio</a></h4>
-              <p class="description">A personal website for projects</p>
-            </div>
-          </div>
-
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="font-orbitron text-4xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-neon to-purple animate-pulse">
+            SYSTEM INITIALIZING
         </div>
+        <div class="loader-bar">
+            <div class="loader-progress" id="progress-bar"></div>
+        </div>
+        <div class="mt-2 font-rajdhani text-gray-500 text-sm">Loading Neural Assets...</div>
+    </div>
 
-      </div>
-    </section><!-- #services -->
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
 
+    <!-- 3D Background -->
+    <div id="canvas-container"></div>
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <!-- Uncomment below i you want to use a preloader -->
-  <!-- <div id="preloader"></div> -->
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-300 p-6" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center backdrop-blur-sm bg-black/20 border border-white/10 rounded-full px-6 py-3">
+            <a href="#" class="font-orbitron text-2xl font-bold text-white tracking-widest hover:text-neon transition-colors">
+                AJ<span class="text-neon">.</span>DEV
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="font-rajdhani font-semibold text-lg text-gray-300 hover:text-white hover:text-glow transition-all">About</a>
+                <a href="#projects" class="font-rajdhani font-semibold text-lg text-gray-300 hover:text-white hover:text-glow transition-all">Innovation</a>
+                <a href="#achievements" class="font-rajdhani font-semibold text-lg text-gray-300 hover:text-white hover:text-glow transition-all">Achievements</a>
+                <a href="#media" class="font-rajdhani font-semibold text-lg text-gray-300 hover:text-white hover:text-glow transition-all">Media</a>
+                <a href="#contact" class="px-6 py-2 rounded-full border border-neon text-neon font-bold hover:bg-neon hover:text-black transition-all shadow-[0_0_15px_rgba(0,243,255,0.3)]">
+                    Connect
+                </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white text-2xl" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/mobile-nav/mobile-nav.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center space-y-8">
+        <button id="close-menu" class="absolute top-8 right-8 text-white text-3xl"><i class="fas fa-times"></i></button>
+        <a href="#about" class="text-2xl font-orbitron text-white mobile-link">About</a>
+        <a href="#projects" class="text-2xl font-orbitron text-white mobile-link">Innovation</a>
+        <a href="#achievements" class="text-2xl font-orbitron text-white mobile-link">Achievements</a>
+        <a href="#media" class="text-2xl font-orbitron text-white mobile-link">Media</a>
+    </div>
 
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+    <!-- Main Content Wrapper -->
+    <main class="relative z-10 w-full">
 
-	
-	<footer>
-		<p class="copyright ">
-			
-Copyright &copy 2022 All rights reserved; 
+        <!-- HERO SECTION -->
+        <section class="h-screen w-full flex items-center justify-center relative px-4" id="home">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 transform translate-y-10 opacity-0" id="hero-text">
+                    <div class="inline-block px-4 py-1 rounded-full border border-purple/50 bg-purple/10 backdrop-blur-md mb-4">
+                        <span class="text-purple font-bold tracking-widest text-sm font-orbitron">AI ARCHITECT & INNOVATOR</span>
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-black font-orbitron leading-tight text-white">
+                        ABHINAV <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-purple text-glow">JAIN</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 font-light max-w-lg leading-relaxed border-l-4 border-neon pl-6">
+                        Designing scalable AI solutions impacting <span class="text-neon font-bold">10 Million+</span> users globally.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#projects" class="group relative px-8 py-3 bg-white text-black font-bold font-orbitron overflow-hidden rounded-none skew-x-[-10deg] hover:scale-105 transition-transform">
+                            <span class="relative z-10 skew-x-[10deg] inline-block">EXPLORE WORK</span>
+                            <div class="absolute inset-0 bg-neon transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/abhinav-jain-8b4bab62" target="_blank" class="px-8 py-3 border border-white text-white font-bold font-orbitron hover:bg-white hover:text-black transition-all skew-x-[-10deg]">
+                            <span class="skew-x-[10deg] inline-block"><i class="fab fa-linkedin"></i> LINKEDIN</span>
+                        </a>
+                    </div>
 
-		</p>
+                    <div class="flex items-center gap-6 pt-8 text-gray-400">
+                        <div class="flex flex-col">
+                            <span class="text-3xl font-bold text-white font-orbitron">10M+</span>
+                            <span class="text-sm">Users Impacted</span>
+                        </div>
+                        <div class="w-px h-10 bg-gray-700"></div>
+                        <div class="flex flex-col">
+                            <span class="text-3xl font-bold text-white font-orbitron">1,500+</span>
+                            <span class="text-sm">GDG Community</span>
+                        </div>
+                        <div class="w-px h-10 bg-gray-700"></div>
+                        <div class="flex flex-col">
+                            <span class="text-3xl font-bold text-white font-orbitron">4.5K+</span>
+                            <span class="text-sm">Followers</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- The right side is left empty for the 3D model visibility -->
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fas fa-chevron-down text-neon text-2xl opacity-70"></i>
+            </div>
+        </section>
 
+        <!-- ABOUT SECTION -->
+        <section id="about" class="py-24 px-4 relative">
+            <div class="max-w-6xl mx-auto">
+                <div class="section-header mb-16 opacity-0" data-scroll>
+                    <h2 class="text-5xl md:text-6xl font-orbitron font-bold text-white mb-2">ABOUT <span class="text-gray-700">ME</span></h2>
+                    <div class="h-1 w-24 bg-neon"></div>
+                </div>
 
-	</footer>
-	
-	
-	<!-- SCIPTS -->
-	
-	<script src="common-js/jquery-3.2.1.min.js"></script>
-	
-	<script src="common-js/tether.min.js"></script>
-	
-	<script src="common-js/bootstrap.js"></script>
-	
-	<script src="common-js/isotope.pkgd.min.js"></script>
-	
-	<script src="common-js/jquery.waypoints.min.js"></script>
-	
-	<script src="common-js/progressbar.min.js"></script>
-	
-	<script src="common-js/jquery.fluidbox.min.js"></script>
-	
-	<script src="common-js/scripts.js"></script>
-	
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="glass-card p-8 rounded-2xl relative overflow-hidden group opacity-0 translate-y-10" data-scroll>
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fas fa-brain text-9xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-orbitron text-neon mb-4">The Professional</h3>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            Currently serving as the <strong class="text-white">AI Lead at Cloudwerx</strong>, I design and deliver scalable AI solutions. For the past six months, I’ve been on-site in <strong class="text-white">Australia</strong>, leading a massive AI deployment for <strong class="text-white">Woolworths</strong>, bridging innovation with enterprise-scale operations.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            Founder of <strong class="text-white">Frazor Enterprise</strong>, specializing in cutting-edge AI for government and enterprise sectors.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl relative overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.2s">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fas fa-users text-9xl text-purple"></i>
+                        </div>
+                        <h3 class="text-2xl font-orbitron text-purple mb-4">The Community Leader</h3>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            As the <strong class="text-white">GDG Cloud Lead for Udaipur</strong>, I nurture a community of over <strong class="text-white">1,500 developers</strong>. I organize high-quality tech events and workshops to empower the next generation.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            A recognized <strong class="text-white">Google Speaker</strong>, I regularly deliver sessions across India. I am also a National and International Hackathon Champion with recognitions from Google, Meta, and NPCI.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Skills Marquee -->
+                <div class="mt-16 w-full overflow-hidden py-8 border-y border-white/10 bg-black/30 backdrop-blur-sm">
+                    <div class="flex space-x-12 animate-marquee whitespace-nowrap">
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-neon transition-colors">ARTIFICIAL INTELLIGENCE</span>
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-purple transition-colors">MACHINE LEARNING</span>
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-neon transition-colors">CLOUD COMPUTING</span>
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-purple transition-colors">SYSTEM ARCHITECTURE</span>
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-neon transition-colors">FULL STACK DEV</span>
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-purple transition-colors">LEADERSHIP</span>
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-neon transition-colors">PUBLIC SPEAKING</span>
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-purple transition-colors">STRATEGIC THINKING</span>
+                        <!-- Repeat for seamless loop -->
+                         <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-neon transition-colors">ARTIFICIAL INTELLIGENCE</span>
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-purple transition-colors">MACHINE LEARNING</span>
+                        <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-neon transition-colors">CLOUD COMPUTING</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INNOVATION / PROJECTS SECTION -->
+        <section id="projects" class="py-24 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 opacity-0" data-scroll>
+                    <div>
+                        <h2 class="text-5xl md:text-6xl font-orbitron font-bold text-white mb-2">INNO<span class="text-neon">VATION</span></h2>
+                        <div class="h-1 w-24 bg-purple"></div>
+                    </div>
+                    <p class="text-gray-400 font-rajdhani max-w-md text-right mt-4 md:mt-0">
+                        Bridging the gap between conceptual AI and real-world enterprise utility.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll>
+                        <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Integration" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                <i class="fas fa-project-diagram text-4xl text-neon"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-neon transition-colors">Frazor Open Connect</h3>
+                            <p class="text-sm text-purple font-semibold mb-2">No-Code Integration Platform</p>
+                            <p class="text-gray-400 text-sm mb-4">
+                                Led a team of 15 to build a platform reducing integration time by 95%. Zero-touch onboarding capable of integrating any REST API without developer expertise.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-xs border border-gray-600 rounded text-gray-300">No-Code</span>
+                                <span class="px-2 py-1 text-xs border border-gray-600 rounded text-gray-300">SaaS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.1s">
+                        <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1587560699334-cc4da63c2409?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Woolworths" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-4xl text-purple"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-purple transition-colors">Woolworths Safety System</h3>
+                            <p class="text-sm text-neon font-semibold mb-2">Enterprise AI Scale</p>
+                            <p class="text-gray-400 text-sm mb-4">
+                                Developed a highly scalable multi-agentic system for store safety, utilized by Woolworths employees across Australia.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-xs border border-gray-600 rounded text-gray-300">Computer Vision</span>
+                                <span class="px-2 py-1 text-xs border border-gray-600 rounded text-gray-300">Multi-Agent</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.2s">
+                        <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="WhatsApp Chatbot" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-4xl text-green-400"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-green-400 transition-colors">KSKT WhatsApp System</h3>
+                            <p class="text-sm text-purple font-semibold mb-2">Agromart Chatbot</p>
+                            <p class="text-gray-400 text-sm mb-4">
+                                End-to-end ordering via WhatsApp. Integrated Google Vision & Speech-to-Text to process handwritten lists, enabling a 2-click grocery ordering system.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-xs border border-gray-600 rounded text-gray-300">RASA</span>
+                                <span class="px-2 py-1 text-xs border border-gray-600 rounded text-gray-300">NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <!-- Project 4 -->
+                    <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.3s">
+                         <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Big Data" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                             <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                <i class="fas fa-database text-4xl text-blue-500"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-blue-500 transition-colors">Big Data Search</h3>
+                            <p class="text-sm text-neon font-semibold mb-2">TF-IDF Vectorization</p>
+                            <p class="text-gray-400 text-sm mb-4">
+                                System for searching 200 Million+ records across multiple PDF/Table structures using TF-IDF.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                     <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.4s">
+                         <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="3D" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                             <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                <i class="fas fa-cube text-4xl text-yellow-500"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-yellow-500 transition-colors">4D Action Recognition</h3>
+                            <p class="text-sm text-purple font-semibold mb-2">Deep Learning</p>
+                            <p class="text-gray-400 text-sm mb-4">
+                                Developed an Action Recognition model using 4D CNN, exploring Spatial & Temporal plotting for finding 3D patterns.
+                            </p>
+                        </div>
+                    </div>
+                     <!-- Project 6 -->
+                     <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.5s">
+                        <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555664424-778a69022365?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gesture" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                             <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                <i class="fas fa-hand-paper text-4xl text-red-500"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-red-500 transition-colors">Reality Gaming</h3>
+                            <p class="text-sm text-neon font-semibold mb-2">Computer Vision</p>
+                            <p class="text-gray-400 text-sm mb-4">
+                                Played Subway Surfer using hand gestures. A project exploring human-computer interaction beyond traditional inputs.
+                            </p>
+                             <a href="https://medium.com/@jain.abhinav14/my-project-on-reality-gaming-how-i-played-subway-surfer-using-gestures-6ef9b97f4be4" target="_blank" class="text-xs text-white underline">Read on Medium</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS SECTION -->
+        <section id="achievements" class="py-24 px-4 bg-gradient-to-b from-transparent to-black/80">
+            <div class="max-w-6xl mx-auto">
+                 <div class="section-header mb-16 text-center opacity-0" data-scroll>
+                    <h2 class="text-5xl md:text-6xl font-orbitron font-bold text-white mb-2">HALL OF <span class="text-purple">FAME</span></h2>
+                    <div class="h-1 w-24 bg-neon mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Achievement 1 -->
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-neon via-purple to-neon opacity-0 scale-95" data-scroll>
+                        <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-trophy text-4xl text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-orbitron text-white">NPCI Ideathon Winner</h3>
+                                <p class="text-neon text-sm mb-2">1st Position • 900+ Teams</p>
+                                <p class="text-gray-400 text-sm">Secured first position with prize money of 1.5 Lakhs to surge digital payments in India. Developed a WhatsApp based bill payment idea.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 2 -->
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-purple via-neon to-purple opacity-0 scale-95" data-scroll style="transition-delay: 0.1s">
+                        <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
+                             <div class="flex-shrink-0">
+                                <i class="fas fa-cloud text-4xl text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-orbitron text-white">Google Cloud Next Ideathon 2022</h3>
+                                <p class="text-neon text-sm mb-2">Winner</p>
+                                <p class="text-gray-400 text-sm">Developed a platform connecting Hospitals, Labs, and Patients, handling diverse data structures and multi-format external system data.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Achievement 3: REPLACED AIRTEL WITH WHATSAPP -->
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-green-400 via-blue-500 to-green-400 opacity-0 scale-95" data-scroll style="transition-delay: 0.2s">
+                        <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
+                             <div class="flex-shrink-0">
+                                <i class="fab fa-whatsapp text-4xl text-green-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-orbitron text-white">WhatsApp Hackathon</h3>
+                                <p class="text-neon text-sm mb-2">Winner - Green Receipt</p>
+                                <p class="text-gray-400 text-sm">Received 20 Lakh cash reward for innovative "Green Receipt" solution.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Achievement 4: UPDATED SPEAKER INFO -->
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 opacity-0 scale-95" data-scroll style="transition-delay: 0.3s">
+                        <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
+                             <div class="flex-shrink-0">
+                                <i class="fas fa-microphone-alt text-4xl text-red-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-orbitron text-white">Google Speaker</h3>
+                                <p class="text-neon text-sm mb-2">Google I/O & National Sessions</p>
+                                <p class="text-gray-400 text-sm">Speaker for Google in Google I/O and taking sessions country-wide. Regular speaker at global tech events.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 5: NEW GOOGLE LINKEDIN AWARD -->
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-white to-blue-400 opacity-0 scale-95" data-scroll style="transition-delay: 0.4s">
+                        <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
+                             <div class="flex-shrink-0">
+                                <i class="fab fa-linkedin text-4xl text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-orbitron text-white">Google LinkedIn Award</h3>
+                                <p class="text-neon text-sm mb-2">International Winner (APAC)</p>
+                                <p class="text-gray-400 text-sm">Awarded for the Best Idea in the APAC region, recognizing excellence in innovation and problem-solving.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 6: NEW TCS IMPACT -->
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-pink-500 via-purple to-pink-500 opacity-0 scale-95" data-scroll style="transition-delay: 0.5s">
+                        <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
+                             <div class="flex-shrink-0">
+                                <i class="fas fa-hand-holding-heart text-4xl text-pink-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-orbitron text-white">TCS Impact Hackathon</h3>
+                                <p class="text-neon text-sm mb-2">Winner - Social Solution</p>
+                                <p class="text-gray-400 text-sm">Developed a social impact solution using 4D CNN Action Recognition technology.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDIA & PRESS SECTION -->
+        <section id="media" class="py-24 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-orbitron font-bold text-white mb-12 text-center opacity-0" data-scroll>MEDIA <span class="text-neon">COVERAGE</span></h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Media Item 1 -->
+                    <a href="https://m.timesofindia.com/city/jaipur/udaipur-students-whatsapp-bill-payment-idea-wins-top-contest/articleshow/80123196.cms" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-bold">TOI</div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">Times of India</h4>
+                                    <p class="text-gray-400 text-sm">WhatsApp bill payment idea wins top contest</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+
+                    <!-- Media Item 2 -->
+                    <a href="https://telecom.economictimes.indiatimes.com/news/green-receipt-frazor-vizard-info-win-airtel-iq-hackathon-receive-rs-20-lakh-cash-reward/96274099" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll style="transition-delay: 0.05s">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-bold">ET</div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">Economic Times</h4>
+                                    <p class="text-gray-400 text-sm">Green Receipt wins Airtel IQ Hackathon</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+
+                    <!-- Media Item 3 -->
+                    <a href="https://www.patrika.com/udaipur-news/prediction-of-virus-and-bacterial-outbreak-by-google-cloud-7826247/" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll style="transition-delay: 0.1s">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-bold">RP</div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">Rajasthan Patrika</h4>
+                                    <p class="text-gray-400 text-sm">Prediction of virus outbreak by Google Cloud</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+
+                    <!-- Media Item 4 -->
+                    <a href="https://www.patrika.com/udaipur-news/abhinav-from-udaipur-created-whatsapp-based-payment-app-got-1-5-lakh-6592036/" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll style="transition-delay: 0.15s">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-bold">RP</div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">Rajasthan Patrika</h4>
+                                    <p class="text-gray-400 text-sm">Udaipur Dev creates WhatsApp Payment App</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+
+                    <!-- Media Item 5: Global Fintech Fest -->
+                    <a href="https://globalfintechfest.com/2021/speakers" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll style="transition-delay: 0.2s">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">GFF</div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">Global Fintech Fest</h4>
+                                    <p class="text-gray-400 text-sm">Speaker at Global Fintech Fest 2021</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+
+                    <!-- Media Item 6: LinkedIn Google IO -->
+                    <a href="https://www.linkedin.com/posts/abhinav-jain-8b4bab62_googleioconnect-ioconnect2025-multiagentsystems-activity-7353317917628727296-DgBb" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll style="transition-delay: 0.25s">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"><i class="fab fa-linkedin-in"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">Google I/O Connect</h4>
+                                    <p class="text-gray-400 text-sm">Featured Post: Multi-Agent Systems</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+
+                    <!-- Media Item 7: LinkedIn GDG Cloud -->
+                    <a href="https://www.linkedin.com/posts/abhinav-jain-8b4bab62_googlecloud-gdgcloududaipur-veo3-activity-7346978466669416448-K64V" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll style="transition-delay: 0.3s">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"><i class="fab fa-linkedin-in"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">GDG Cloud Udaipur</h4>
+                                    <p class="text-gray-400 text-sm">Building the Tech Community</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+
+                    <!-- Media Item 8: LinkedIn India AI -->
+                    <a href="https://www.linkedin.com/posts/abhinav-jain-8b4bab62_indiabuildswai-buildwithai-indiaai-activity-7192146620589686785-ASrx" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll style="transition-delay: 0.35s">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"><i class="fab fa-linkedin-in"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">India Builds with AI</h4>
+                                    <p class="text-gray-400 text-sm">Empowering developers across India</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+
+                    <!-- Media Item 9: LinkedIn Airtel Ideas -->
+                    <a href="https://www.linkedin.com/posts/abhinav-jain-8b4bab62_ideas-innovation-airtel-activity-7010476660328181760-yPZR" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll style="transition-delay: 0.4s">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"><i class="fab fa-linkedin-in"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">Ideas & Innovation</h4>
+                                    <p class="text-gray-400 text-sm">Feature on Airtel Innovation</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+
+                    <!-- Media Item 10: YouTube -->
+                    <a href="https://www.youtube.com/watch?v=1WCjCt7qLTM&ab_channel=Ubiqc" target="_blank" class="block glass-card p-6 rounded-lg hover:bg-white/5 transition-all group opacity-0 translate-y-6" data-scroll style="transition-delay: 0.45s">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold"><i class="fab fa-youtube"></i></div>
+                                <div>
+                                    <h4 class="text-white font-bold group-hover:text-neon transition-colors">YouTube Feature</h4>
+                                    <p class="text-gray-400 text-sm">Ubiqc Interview & Session</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER / CONTACT -->
+        <footer id="contact" class="py-16 bg-black border-t border-white/10 relative overflow-hidden">
+             <!-- Decorative glowing circle -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-neon/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto text-center relative z-10 px-4">
+                <h2 class="text-3xl font-orbitron font-bold text-white mb-8">READY TO INNOVATE?</h2>
+                <div class="flex justify-center gap-6 mb-12">
+                    <a href="https://www.linkedin.com/in/abhinav-jain-8b4bab62" target="_blank" class="w-14 h-14 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-neon hover:bg-neon/10 transition-all text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=1WCjCt7qLTM&ab_channel=Ubiqc" target="_blank" class="w-14 h-14 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-red-500 hover:bg-red-500/10 transition-all text-xl">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="mailto:contact@example.com" class="w-14 h-14 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple hover:bg-purple/10 transition-all text-xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <p class="text-gray-500 font-rajdhani">
+                    &copy; 2025 Abhinav Jain. All systems operational.
+                    <br>
+                    Technology excites me, community drives me, and impact defines my journey.
+                </p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // --- 1. PRELOADER ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const bar = document.getElementById('progress-bar');
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    gsap.to('#loader', {
+                        y: '-100%',
+                        duration: 1,
+                        ease: 'power4.inOut',
+                        onComplete: () => {
+                            // Start animations after load
+                            initThreeJS();
+                            initScrollAnimations();
+                            // Fade in Canvas
+                            document.getElementById('canvas-container').style.opacity = '1';
+                        }
+                    });
+                } else {
+                    width += Math.random() * 10;
+                    bar.style.width = width + '%';
+                }
+            }, 100);
+        });
+
+        // --- 2. CUSTOM CURSOR ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Adding a slight delay to the outline for smooth feel
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // --- 3. THREE.JS BACKGROUND ---
+        let scene, camera, renderer, particles, starGeo, stars, lineMesh;
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        function initThreeJS() {
+            const container = document.getElementById('canvas-container');
+            
+            // Scene Setup
+            scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x050505, 0.001); // Dark fog for depth
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 200; // Moving camera back
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Objects: Neural Network Globe (Points + Lines)
+            const particleCount = 250; // Number of nodes
+            const group = new THREE.Group();
+            scene.add(group);
+
+            // Geometry for Nodes
+            const geometry = new THREE.BufferGeometry();
+            const positions = [];
+            
+            // Create a Sphere of particles
+            const radius = 100;
+            for(let i = 0; i < particleCount; i++) {
+                const theta = THREE.MathUtils.randFloatSpread(360); 
+                const phi = THREE.MathUtils.randFloatSpread(360); 
+
+                // Convert spherical coords to cartesian
+                const x = radius * Math.sin(theta) * Math.cos(phi);
+                const y = radius * Math.sin(theta) * Math.sin(phi);
+                const z = radius * Math.cos(theta);
+
+                positions.push(x, y, z);
+            }
+
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+
+            // Material for Nodes
+            const material = new THREE.PointsMaterial({
+                color: 0x00f3ff,
+                size: 2,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending
+            });
+
+            particles = new THREE.Points(geometry, material);
+            group.add(particles);
+
+            // Connection Lines (Dynamic)
+            // We'll calculate lines in animation loop to make them pulse or limit them
+            // But for performance, let's create a static web that rotates
+            const lineMaterial = new THREE.LineBasicMaterial({
+                color: 0xbc13fe,
+                transparent: true,
+                opacity: 0.15
+            });
+
+            // Find close particles to connect
+            const linePositions = [];
+            const posArray = particles.geometry.attributes.position.array;
+
+            // Simple distance check (expensive loop, but okay for init)
+            for(let i = 0; i < particleCount; i++) {
+                for(let j = i + 1; j < particleCount; j++) {
+                    const dx = posArray[i*3] - posArray[j*3];
+                    const dy = posArray[i*3+1] - posArray[j*3+1];
+                    const dz = posArray[i*3+2] - posArray[j*3+2];
+                    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+
+                    if(dist < 35) { // Threshold for connection
+                        linePositions.push(
+                            posArray[i*3], posArray[i*3+1], posArray[i*3+2],
+                            posArray[j*3], posArray[j*3+1], posArray[j*3+2]
+                        );
+                    }
+                }
+            }
+
+            const lineGeometry = new THREE.BufferGeometry();
+            lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+            lineMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
+            group.add(lineMesh);
+
+            // Ambient Stars
+            const starGeometry = new THREE.BufferGeometry();
+            const starCount = 2000;
+            const starPos = [];
+            for(let i=0; i<starCount; i++) {
+                const x = (Math.random() - 0.5) * 2000;
+                const y = (Math.random() - 0.5) * 2000;
+                const z = (Math.random() - 0.5) * 2000;
+                starPos.push(x,y,z);
+            }
+            starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
+            const starMaterial = new THREE.PointsMaterial({color: 0xffffff, size: 1.5, transparent: true, opacity: 0.6});
+            stars = new THREE.Points(starGeometry, starMaterial);
+            scene.add(stars);
+
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            const pointLight = new THREE.PointLight(0x00f3ff, 2, 500);
+            pointLight.position.set(50, 50, 50);
+            scene.add(pointLight);
+
+            // Interaction
+            document.addEventListener('mousemove', onDocumentMouseMove);
+            window.addEventListener('resize', onWindowResize);
+
+            // Animation Loop
+            const animate = function () {
+                requestAnimationFrame(animate);
+
+                // Gentle rotation
+                group.rotation.y += 0.002;
+                group.rotation.x += 0.001;
+                stars.rotation.y -= 0.0005;
+
+                // Mouse interactivity (Parallax)
+                targetX = mouseX * 0.001;
+                targetY = mouseY * 0.001;
+
+                group.rotation.y += 0.05 * (targetX - group.rotation.y);
+                group.rotation.x += 0.05 * (targetY - group.rotation.x);
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+
+            // GSAP Scroll Interaction with 3D Scene
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Move/Scale Globe on Scroll
+            gsap.to(group.scale, {
+                scrollTrigger: {
+                    trigger: "#projects",
+                    start: "top bottom",
+                    end: "bottom bottom",
+                    scrub: 1
+                },
+                x: 1.5, y: 1.5, z: 1.5
+            });
+
+            gsap.to(group.rotation, {
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 2
+                },
+                z: Math.PI / 2
+            });
+        }
+
+        function onDocumentMouseMove(event) {
+            mouseX = (event.clientX - window.innerWidth / 2);
+            mouseY = (event.clientY - window.innerHeight / 2);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // --- 4. SCROLL ANIMATIONS ---
+        function initScrollAnimations() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero Text
+            gsap.to("#hero-text", {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            });
+
+            // Fade Up Elements
+            const fadeElements = document.querySelectorAll('[data-scroll]');
+            fadeElements.forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%", // Trigger when element is 85% down viewport
+                        toggleActions: "play none none reverse"
+                    },
+                    opacity: 1,
+                    y: 0,
+                    x: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+
+            // Marquee Animation Control
+            gsap.to(".animate-marquee", {
+                xPercent: -50,
+                repeat: -1,
+                duration: 20,
+                ease: "linear"
+            });
+        }
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+            });
+        });
+
+    </script>
 </body>
 </html>
