@@ -30,6 +30,14 @@
                     },
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
                     }
                 }
             }
@@ -82,12 +90,17 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(0, 243, 255, 0.1);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .glass-card:hover {
-            border-color: rgba(0, 243, 255, 0.4);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
-            transform: translateY(-5px);
+            border-color: rgba(0, 243, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        .glass-card-purple:hover {
+            border-color: rgba(188, 19, 254, 0.5);
+            box-shadow: 0 10px 30px rgba(188, 19, 254, 0.2);
         }
 
         /* Neon Text Glow */
@@ -120,6 +133,7 @@
             position: relative;
             overflow: hidden;
         }
+        
         .loader-progress {
             position: absolute;
             top: 0;
@@ -179,9 +193,10 @@
             <a href="#" class="font-orbitron text-2xl font-bold text-white tracking-widest hover:text-neon transition-colors">
                 AJ<span class="text-neon">.</span>DEV
             </a>
-            <div class="hidden md:flex space-x-8">
+            <div class="hidden md:flex space-x-6 lg:space-x-8">
                 <a href="#about" class="font-rajdhani font-semibold text-lg text-gray-300 hover:text-white hover:text-glow transition-all">About</a>
                 <a href="#projects" class="font-rajdhani font-semibold text-lg text-gray-300 hover:text-white hover:text-glow transition-all">Innovation</a>
+                <a href="#consulting" class="font-rajdhani font-semibold text-lg text-gray-300 hover:text-white hover:text-glow transition-all">Consulting</a>
                 <a href="#achievements" class="font-rajdhani font-semibold text-lg text-gray-300 hover:text-white hover:text-glow transition-all">Achievements</a>
                 <a href="#media" class="font-rajdhani font-semibold text-lg text-gray-300 hover:text-white hover:text-glow transition-all">Media</a>
                 <a href="#contact" class="px-6 py-2 rounded-full border border-neon text-neon font-bold hover:bg-neon hover:text-black transition-all shadow-[0_0_15px_rgba(0,243,255,0.3)]">
@@ -200,6 +215,7 @@
         <button id="close-menu" class="absolute top-8 right-8 text-white text-3xl"><i class="fas fa-times"></i></button>
         <a href="#about" class="text-2xl font-orbitron text-white mobile-link">About</a>
         <a href="#projects" class="text-2xl font-orbitron text-white mobile-link">Innovation</a>
+        <a href="#consulting" class="text-2xl font-orbitron text-white mobile-link">Consulting</a>
         <a href="#achievements" class="text-2xl font-orbitron text-white mobile-link">Achievements</a>
         <a href="#media" class="text-2xl font-orbitron text-white mobile-link">Media</a>
     </div>
@@ -271,30 +287,30 @@
                             <i class="fas fa-brain text-9xl text-white"></i>
                         </div>
                         <h3 class="text-2xl font-orbitron text-neon mb-4">The Professional</h3>
-                        <p class="text-gray-300 mb-4 leading-relaxed">
+                        <p class="text-gray-300 mb-4 leading-relaxed relative z-10">
                             Currently serving as the <strong class="text-white">AI Lead at Cloudwerx</strong>, I design and deliver scalable AI solutions. For the past six months, I’ve been on-site in <strong class="text-white">Australia</strong>, leading a massive AI deployment for <strong class="text-white">Woolworths</strong>, bridging innovation with enterprise-scale operations.
                         </p>
-                        <p class="text-gray-300 leading-relaxed">
+                        <p class="text-gray-300 leading-relaxed relative z-10">
                             Founder of <strong class="text-white">Frazor Enterprise</strong>, specializing in cutting-edge AI for government and enterprise sectors.
                         </p>
                     </div>
 
-                    <div class="glass-card p-8 rounded-2xl relative overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.2s">
+                    <div class="glass-card glass-card-purple p-8 rounded-2xl relative overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.2s">
                         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                             <i class="fas fa-users text-9xl text-purple"></i>
                         </div>
                         <h3 class="text-2xl font-orbitron text-purple mb-4">The Community Leader</h3>
-                        <p class="text-gray-300 mb-4 leading-relaxed">
+                        <p class="text-gray-300 mb-4 leading-relaxed relative z-10">
                             As the <strong class="text-white">GDG Cloud Lead for Udaipur</strong>, I nurture a community of over <strong class="text-white">2,000 developers</strong>. I organize high-quality tech events and workshops to empower the next generation.
                         </p>
-                        <p class="text-gray-300 leading-relaxed">
+                        <p class="text-gray-300 leading-relaxed relative z-10">
                             A recognized <strong class="text-white">Google Speaker</strong>, I regularly deliver sessions across India. I am also a National and International Hackathon Champion with recognitions from Google, Meta, and NPCI.
                         </p>
                     </div>
                 </div>
 
                 <!-- Skills Marquee -->
-                <div class="mt-16 w-full overflow-hidden py-8 border-y border-white/10 bg-black/30 backdrop-blur-sm">
+                <div class="mt-16 w-full overflow-hidden py-8 border-y border-white/10 bg-black/30 backdrop-blur-sm relative z-10">
                     <div class="flex space-x-12 animate-marquee whitespace-nowrap">
                         <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-neon transition-colors">ARTIFICIAL INTELLIGENCE</span>
                         <span class="text-2xl font-rajdhani font-bold text-gray-500 hover:text-purple transition-colors">MACHINE LEARNING</span>
@@ -314,7 +330,7 @@
         </section>
 
         <!-- INNOVATION / PROJECTS SECTION -->
-        <section id="projects" class="py-24 px-4">
+        <section id="projects" class="py-24 px-4 relative z-10">
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-16 opacity-0" data-scroll>
                     <div>
@@ -330,12 +346,12 @@
                     <!-- Project 1 -->
                     <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll>
                         <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Integration" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Integration" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                <i class="fas fa-project-diagram text-4xl text-neon"></i>
+                                <i class="fas fa-project-diagram text-4xl text-neon group-hover:scale-125 transition-transform duration-500"></i>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="p-6 relative z-10">
                             <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-neon transition-colors">Frazor Open Connect</h3>
                             <p class="text-sm text-purple font-semibold mb-2">No-Code Integration Platform</p>
                             <p class="text-gray-400 text-sm mb-4">
@@ -349,14 +365,14 @@
                     </div>
 
                     <!-- Project 2 -->
-                    <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.1s">
+                    <div class="glass-card glass-card-purple rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.1s">
                         <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1587560699334-cc4da63c2409?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Woolworths" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1587560699334-cc4da63c2409?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Woolworths" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                <i class="fas fa-shield-alt text-4xl text-purple"></i>
+                                <i class="fas fa-shield-alt text-4xl text-purple group-hover:scale-125 transition-transform duration-500"></i>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="p-6 relative z-10">
                             <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-purple transition-colors">Woolworths Safety System</h3>
                             <p class="text-sm text-neon font-semibold mb-2">Enterprise AI Scale</p>
                             <p class="text-gray-400 text-sm mb-4">
@@ -372,12 +388,12 @@
                     <!-- Project 3 -->
                     <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.2s">
                         <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="WhatsApp Chatbot" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="WhatsApp Chatbot" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                <i class="fab fa-whatsapp text-4xl text-green-400"></i>
+                                <i class="fab fa-whatsapp text-4xl text-green-400 group-hover:scale-125 transition-transform duration-500"></i>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="p-6 relative z-10">
                             <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-green-400 transition-colors">KSKT WhatsApp System</h3>
                             <p class="text-sm text-purple font-semibold mb-2">Agromart Chatbot</p>
                             <p class="text-gray-400 text-sm mb-4">
@@ -391,14 +407,14 @@
                     </div>
                     
                      <!-- Project 4 -->
-                    <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.3s">
+                    <div class="glass-card glass-card-purple rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.3s">
                          <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Big Data" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Big Data" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                              <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                <i class="fas fa-database text-4xl text-blue-500"></i>
+                                <i class="fas fa-database text-4xl text-blue-500 group-hover:scale-125 transition-transform duration-500"></i>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="p-6 relative z-10">
                             <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-blue-500 transition-colors">Big Data Search</h3>
                             <p class="text-sm text-neon font-semibold mb-2">TF-IDF Vectorization</p>
                             <p class="text-gray-400 text-sm mb-4">
@@ -410,12 +426,12 @@
                     <!-- Project 5 -->
                      <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.4s">
                          <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="3D" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="3D" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                              <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                <i class="fas fa-cube text-4xl text-yellow-500"></i>
+                                <i class="fas fa-cube text-4xl text-yellow-500 group-hover:scale-125 transition-transform duration-500"></i>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="p-6 relative z-10">
                             <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-yellow-500 transition-colors">4D Action Recognition</h3>
                             <p class="text-sm text-purple font-semibold mb-2">Deep Learning</p>
                             <p class="text-gray-400 text-sm mb-4">
@@ -423,15 +439,16 @@
                             </p>
                         </div>
                     </div>
+
                      <!-- Project 6 -->
-                     <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.5s">
+                     <div class="glass-card glass-card-purple rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.5s">
                         <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1555664424-778a69022365?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gesture" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1555664424-778a69022365?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gesture" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                              <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                <i class="fas fa-hand-paper text-4xl text-red-500"></i>
+                                <i class="fas fa-hand-paper text-4xl text-red-500 group-hover:scale-125 transition-transform duration-500"></i>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="p-6 relative z-10">
                             <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-red-500 transition-colors">Reality Gaming</h3>
                             <p class="text-sm text-neon font-semibold mb-2">Computer Vision</p>
                             <p class="text-gray-400 text-sm mb-4">
@@ -444,12 +461,12 @@
                     <!-- Project 7 (New) -->
                     <div class="glass-card rounded-xl overflow-hidden group opacity-0 translate-y-10" data-scroll style="transition-delay: 0.6s">
                         <div class="h-48 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cloud Voice" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cloud Voice" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                              <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                <i class="fas fa-headset text-4xl text-cyan-400"></i>
+                                <i class="fas fa-headset text-4xl text-cyan-400 group-hover:scale-125 transition-transform duration-500"></i>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="p-6 relative z-10">
                             <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-cyan-400 transition-colors">Smart Cloud Contact Center</h3>
                             <p class="text-sm text-purple font-semibold mb-2">Amazon Connect & Salesforce</p>
                             <p class="text-gray-400 text-sm mb-4">
@@ -467,8 +484,102 @@
             </div>
         </section>
 
+        <!-- AI CONSULTING SECTION -->
+        <section id="consulting" class="py-24 px-4 relative overflow-hidden z-10">
+            <!-- Animated background elements for motion graphics feel -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-neon/10 rounded-full animate-spin-slow pointer-events-none"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-purple/10 rounded-full animate-spin-slow pointer-events-none" style="animation-direction: reverse; animation-duration: 15s;"></div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="section-header mb-16 text-center opacity-0" data-scroll>
+                    <div class="inline-block px-4 py-1 rounded-full border border-neon/50 bg-neon/10 backdrop-blur-md mb-6 animate-float">
+                        <span class="text-neon font-bold tracking-widest text-sm font-orbitron"><i class="fas fa-bolt mr-2"></i> ENTERPRISE SOLUTIONS</span>
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-orbitron font-bold text-white mb-4">AI <span class="text-purple">TRANSFORMATION</span></h2>
+                    <p class="text-gray-300 font-rajdhani text-xl max-w-3xl mx-auto leading-relaxed">
+                        Empowering organizations to adopt, scale, and thrive with Artificial Intelligence. From strategic consulting to full-scale enterprise deployment, I architect systems that drive measurable business impact and <span class="text-neon font-bold">help shape AI in governance</span>.
+                    </p>
+                </div>
+
+                <!-- Consulting Pillars -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                    <div class="glass-card p-8 rounded-2xl group opacity-0 translate-y-10 hover:-translate-y-4 transition-transform duration-500 relative" data-scroll style="transition-delay: 0.1s">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-neon/20 to-transparent border border-neon/30 flex items-center justify-center mb-6 animate-float" style="animation-delay: 0s;">
+                            <i class="fas fa-chess-knight text-3xl text-neon"></i>
+                        </div>
+                        <h3 class="text-2xl font-orbitron font-bold text-white mb-3 group-hover:text-neon transition-colors">AI Strategy</h3>
+                        <p class="text-gray-400">Identifying high-impact use cases, auditing data readiness, and charting a comprehensive roadmap tailored to your industry dynamics.</p>
+                    </div>
+
+                    <div class="glass-card glass-card-purple p-8 rounded-2xl group opacity-0 translate-y-10 hover:-translate-y-4 transition-transform duration-500 relative" data-scroll style="transition-delay: 0.2s">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple/20 to-transparent border border-purple/30 flex items-center justify-center mb-6 animate-float" style="animation-delay: 1s;">
+                            <i class="fas fa-network-wired text-3xl text-purple"></i>
+                        </div>
+                        <h3 class="text-2xl font-orbitron font-bold text-white mb-3 group-hover:text-purple transition-colors">Implementation</h3>
+                        <p class="text-gray-400">Building scalable ML models, GenAI integrations, and multi-agent systems optimized for existing enterprise cloud infrastructures.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl group opacity-0 translate-y-10 hover:-translate-y-4 transition-transform duration-500 relative" data-scroll style="transition-delay: 0.3s">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-neon/20 to-transparent border border-neon/30 flex items-center justify-center mb-6 animate-float" style="animation-delay: 2s;">
+                            <i class="fas fa-rocket text-3xl text-neon"></i>
+                        </div>
+                        <h3 class="text-2xl font-orbitron font-bold text-white mb-3 group-hover:text-neon transition-colors">Scale & Optimize</h3>
+                        <p class="text-gray-400">Ensuring continuous deployment, reducing latency, refining ML pipelines, and optimizing token usage for large-scale operations.</p>
+                    </div>
+                </div>
+
+                <!-- Notable Clients -->
+                <div class="text-center opacity-0" data-scroll style="transition-delay: 0.4s">
+                    <h3 class="text-2xl font-orbitron font-bold text-gray-500 mb-4 tracking-widest uppercase">Trusted By Industry & Government</h3>
+                    
+                    <div class="inline-block px-4 py-1 rounded-full border border-purple/50 bg-purple/10 backdrop-blur-md mb-8">
+                        <span class="text-purple font-semibold text-sm font-rajdhani">Helping shape the future of AI in Public Governance & Enterprise Operations</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <!-- Client 1 -->
+                        <div class="glass-card flex flex-col items-center justify-center py-10 px-4 rounded-xl group hover:bg-white/5 transition-all">
+                            <i class="fas fa-gem text-4xl text-gray-600 group-hover:text-neon transition-colors mb-4 group-hover:scale-110 duration-300"></i>
+                            <h4 class="font-rajdhani font-bold text-xl text-gray-300 group-hover:text-white transition-colors text-center">Madhav Marbles</h4>
+                        </div>
+                        
+                        <!-- Client 2 -->
+                        <div class="glass-card glass-card-purple flex flex-col items-center justify-center py-10 px-4 rounded-xl group hover:bg-white/5 transition-all">
+                            <i class="fas fa-briefcase text-4xl text-gray-600 group-hover:text-purple transition-colors mb-4 group-hover:scale-110 duration-300"></i>
+                            <h4 class="font-rajdhani font-bold text-xl text-gray-300 group-hover:text-white transition-colors text-center">FBSPL</h4>
+                        </div>
+
+                        <!-- Client 3 -->
+                        <div class="glass-card flex flex-col items-center justify-center py-10 px-4 rounded-xl group hover:bg-white/5 transition-all">
+                            <i class="fas fa-code-branch text-4xl text-gray-600 group-hover:text-neon transition-colors mb-4 group-hover:scale-110 duration-300"></i>
+                            <h4 class="font-rajdhani font-bold text-xl text-gray-300 group-hover:text-white transition-colors text-center">Infosys</h4>
+                        </div>
+
+                        <!-- Client 4 -->
+                        <div class="glass-card glass-card-purple flex flex-col items-center justify-center py-10 px-4 rounded-xl group hover:bg-white/5 transition-all">
+                            <i class="fas fa-gas-pump text-4xl text-gray-600 group-hover:text-purple transition-colors mb-4 group-hover:scale-110 duration-300"></i>
+                            <h4 class="font-rajdhani font-bold text-xl text-gray-300 group-hover:text-white transition-colors text-center">GP Petroleum</h4>
+                        </div>
+
+                        <!-- Client 5 -->
+                        <div class="glass-card flex flex-col items-center justify-center py-10 px-4 rounded-xl group hover:bg-white/5 transition-all">
+                            <i class="fas fa-landmark text-4xl text-gray-600 group-hover:text-neon transition-colors mb-4 group-hover:scale-110 duration-300"></i>
+                            <h4 class="font-rajdhani font-bold text-xl text-gray-300 group-hover:text-white transition-colors text-center">Govt of India<br><span class="text-sm text-neon font-semibold tracking-wider">TRI</span></h4>
+                        </div>
+
+                        <!-- Client 6 -->
+                        <div class="glass-card glass-card-purple flex flex-col items-center justify-center py-10 px-4 rounded-xl group hover:bg-white/5 transition-all">
+                            <i class="fas fa-university text-4xl text-gray-600 group-hover:text-purple transition-colors mb-4 group-hover:scale-110 duration-300"></i>
+                            <h4 class="font-rajdhani font-bold text-xl text-gray-300 group-hover:text-white transition-colors text-center">Govt of Rajasthan</h4>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 font-rajdhani mt-6 italic">...and many more innovative organizations.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- ACHIEVEMENTS SECTION -->
-        <section id="achievements" class="py-24 px-4 bg-gradient-to-b from-transparent to-black/80">
+        <section id="achievements" class="py-24 px-4 bg-gradient-to-b from-transparent to-black/80 relative z-10">
             <div class="max-w-6xl mx-auto">
                  <div class="section-header mb-16 text-center opacity-0" data-scroll>
                     <h2 class="text-5xl md:text-6xl font-orbitron font-bold text-white mb-2">HALL OF <span class="text-purple">FAME</span></h2>
@@ -477,7 +588,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Achievement 1 -->
-                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-neon via-purple to-neon opacity-0 scale-95" data-scroll>
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-neon via-purple to-neon opacity-0 scale-95 hover:scale-100 transition-transform duration-500" data-scroll>
                         <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
                             <div class="flex-shrink-0">
                                 <i class="fas fa-trophy text-4xl text-yellow-400"></i>
@@ -491,7 +602,7 @@
                     </div>
 
                     <!-- Achievement 2 -->
-                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-purple via-neon to-purple opacity-0 scale-95" data-scroll style="transition-delay: 0.1s">
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-purple via-neon to-purple opacity-0 scale-95 hover:scale-100 transition-transform duration-500" data-scroll style="transition-delay: 0.1s">
                         <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
                              <div class="flex-shrink-0">
                                 <i class="fas fa-cloud text-4xl text-blue-400"></i>
@@ -504,8 +615,8 @@
                         </div>
                     </div>
 
-                     <!-- Achievement 3: REPLACED AIRTEL WITH WHATSAPP -->
-                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-green-400 via-blue-500 to-green-400 opacity-0 scale-95" data-scroll style="transition-delay: 0.2s">
+                    <!-- Achievement 3: REPLACED AIRTEL WITH WHATSAPP -->
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-green-400 via-blue-500 to-green-400 opacity-0 scale-95 hover:scale-100 transition-transform duration-500" data-scroll style="transition-delay: 0.2s">
                         <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
                              <div class="flex-shrink-0">
                                 <i class="fab fa-whatsapp text-4xl text-green-500"></i>
@@ -519,7 +630,7 @@
                     </div>
 
                      <!-- Achievement 4: UPDATED SPEAKER INFO -->
-                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 opacity-0 scale-95" data-scroll style="transition-delay: 0.3s">
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 opacity-0 scale-95 hover:scale-100 transition-transform duration-500" data-scroll style="transition-delay: 0.3s">
                         <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
                              <div class="flex-shrink-0">
                                 <i class="fas fa-microphone-alt text-4xl text-red-400"></i>
@@ -533,7 +644,7 @@
                     </div>
 
                     <!-- Achievement 5: NEW GOOGLE LINKEDIN AWARD -->
-                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-white to-blue-400 opacity-0 scale-95" data-scroll style="transition-delay: 0.4s">
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-blue-400 via-white to-blue-400 opacity-0 scale-95 hover:scale-100 transition-transform duration-500" data-scroll style="transition-delay: 0.4s">
                         <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
                              <div class="flex-shrink-0">
                                 <i class="fab fa-linkedin text-4xl text-blue-500"></i>
@@ -547,7 +658,7 @@
                     </div>
 
                     <!-- Achievement 6: NEW TCS IMPACT -->
-                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-pink-500 via-purple to-pink-500 opacity-0 scale-95" data-scroll style="transition-delay: 0.5s">
+                    <div class="relative p-1 rounded-2xl bg-gradient-to-r from-pink-500 via-purple to-pink-500 opacity-0 scale-95 hover:scale-100 transition-transform duration-500" data-scroll style="transition-delay: 0.5s">
                         <div class="bg-gray-900 rounded-xl p-8 h-full flex items-start space-x-4">
                              <div class="flex-shrink-0">
                                 <i class="fas fa-hand-holding-heart text-4xl text-pink-500"></i>
@@ -565,7 +676,7 @@
         </section>
 
         <!-- MEDIA & PRESS SECTION -->
-        <section id="media" class="py-24 px-4">
+        <section id="media" class="py-24 px-4 relative z-10">
             <div class="max-w-7xl mx-auto">
                 <h2 class="text-4xl font-orbitron font-bold text-white mb-12 text-center opacity-0" data-scroll>MEDIA <span class="text-neon">COVERAGE</span></h2>
                 
@@ -854,8 +965,6 @@
             group.add(particles);
 
             // Connection Lines (Dynamic)
-            // We'll calculate lines in animation loop to make them pulse or limit them
-            // But for performance, let's create a static web that rotates
             const lineMaterial = new THREE.LineBasicMaterial({
                 color: 0xbc13fe,
                 transparent: true,
@@ -866,7 +975,7 @@
             const linePositions = [];
             const posArray = particles.geometry.attributes.position.array;
 
-            // Simple distance check (expensive loop, but okay for init)
+            // Simple distance check
             for(let i = 0; i < particleCount; i++) {
                 for(let j = i + 1; j < particleCount; j++) {
                     const dx = posArray[i*3] - posArray[j*3];
@@ -983,7 +1092,7 @@
                 ease: "power3.out"
             });
 
-            // Fade Up Elements
+            // Fade Up Elements (Works for everything including the new Consulting section)
             const fadeElements = document.querySelectorAll('[data-scroll]');
             fadeElements.forEach(el => {
                 gsap.to(el, {
